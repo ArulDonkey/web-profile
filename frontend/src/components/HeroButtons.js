@@ -27,7 +27,7 @@ const HeroButtons = () => {
           variant="contained"
           color="primary"
           size="large"
-          href="https://drive.google.com/drive/u/0/folders/18GYRHNR4qf2KelWPim9lWEfBwBGuZJQ-"
+          href="https://drive.google.com/file/d/1g-MeqvWgpY_jIBtsnUzG4TNfTOlgqmp0/view?usp=sharing"
           endIcon={<HelpIcon />}
           fullWidth={isMd ? false : true}
           disableElevation={true}

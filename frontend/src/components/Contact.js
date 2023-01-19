@@ -16,31 +16,29 @@ import Map from "./Map";
 
 const Contact = () => {
   const theme = useTheme();
-  
+
   const [contact, setContact] = useState([]);
-  
+
   const fetchContact = () => {
-    axios.get("http://127.0.0.1:8000/contact", {
-      headers: {
-        "Accept": "application/json",
-      }
-    })
-    .then(response => {
-      setContact(response.data);
-    })
-    .catch(error => console.log(error));
+    axios
+      .get("http://127.0.0.1:8000/contact", {
+        headers: {
+          Accept: "application/json",
+        },
+      })
+      .then((response) => {
+        setContact(response.data);
+      })
+      .catch((error) => console.log(error));
   };
-  
+
   useEffect(() => {
     fetchContact();
   }, []);
-    
+
   return (
     <div id="contact">
-      <Box 
-        position="relative"
-        marginBottom={15}
-      >
+      <Box position="relative" marginBottom={15}>
         <Box
           maxWidth={{ sm: 720, md: 1236 }}
           width={1}
@@ -68,16 +66,18 @@ const Contact = () => {
               marginTop={4}
               marginBottom={6}
             >
-              Jika kalian tertarik berkerja sama dengan saya, yuk hubungi account saya atau bisa datang langsung untuk sharing program dan ngopi
+              Jika kalian tertarik berkerja sama dengan saya, yuk hubungi
+              account saya atau bisa datang langsung untuk sharing program dan
+              ngopi
             </Typography>
           </Box>
           {contact.slice(0, 1).map((item, i) => (
             <Grid container spacing={3} key={i}>
               <Grid item md={4} xs={12}>
                 <Box marginTop={3} marginBottom={2} justifyContent="center">
-                  <Typography 
-                    variant="h4" 
-                    sx={{ fontWeight: 600 }} 
+                  <Typography
+                    variant="h4"
+                    sx={{ fontWeight: 600 }}
                     gutterBottom
                     alignItems="center"
                   >
@@ -112,10 +112,7 @@ const Contact = () => {
                         <PhoneIcon fontSize="small" />
                       </Box>
                     </Box>
-                    <ListItemText 
-                      primary="Phone"
-                      secondary={item.phone}
-                    />
+                    <ListItemText primary="Phone" secondary={item.phone} />
                   </Box>
                   <Box
                     component={ListItem}
@@ -140,10 +137,7 @@ const Contact = () => {
                         <EmailIcon fontSize="small" />
                       </Box>
                     </Box>
-                    <ListItemText 
-                      primary="Email"
-                      secondary={item.email}
-                    />
+                    <ListItemText primary="Email" secondary={item.email} />
                   </Box>
                   <Box
                     component={ListItem}
@@ -167,18 +161,12 @@ const Contact = () => {
                         <LocationIcon fontSize="small" />
                       </Box>
                     </Box>
-                    <ListItemText 
-                      primary="Location"
-                      secondary={item.address} 
-                    />
+                    <ListItemText primary="Location" secondary={item.address} />
                   </Box>
                 </Box>
               </Grid>
               <Grid item md={8} xs={12}>
-                <Map 
-                  coordinates={[item.latitude, item.longitude]} 
-                  zoom={13} 
-                />
+                <Map coordinates={[item.latitude, item.longitude]} zoom={13} />
               </Grid>
             </Grid>
           ))}
